@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+	<link href="style_.css" rel="stylesheet" type="text/css">
+	<meta http-equiv="Content-Type" content="text/html"; charset="utf-8" />
+	<title>EURA7 & ABANANA</title>
+	<script>
+        function templateGen(){
+            var type = $('input[name=colorRadio]:checked' , '#template').val();
+            var photosection = "<td style='width: 120px; padding-right: 12px; padding-top: 6px; '><img src='" + (document.getElementById("generate_photo").innerHTML =$("#photo_input").val()) + "' alt='' border='0' width='120' height='120' /></td><td padding-left='6px'><div style='line-height: 50px; border-left: 1px solid #ededed;padding: 0;color: white;'>&nbsp;</div></td>";
+            if ($("#photo_input").val() == 'http://static.eura7.com/email/') {
+                photosection = "";
+            };
+
+            var logo = (type == 'eura7' ? '<td colspan="3" style="width: 220px; padding: 0px 0px 0px 18px;"><span><a href="http://www.eura7.com/?utm_source=email&utm_medium=footer"><img src="http://static.eura7.com/email/eura7.png" border="0" alt="Eura7" width="93" height="31" /></a></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><a href="https://www.facebook.com/EURA7/"><img src="http://static.eura7.com/email/facebook.png" border="0" alt="Facebook" width="24" height="24" style="vertical-align: 4px;" /></a>&nbsp;&nbsp;<a href="https://www.linkedin.com/company/eura7/"><img src="http://static.eura7.com/email/linkedin.png" border="0" alt="LinkedIn" width="24" height="24" style="vertical-align: 4px;"/></a></span></td>' : '<td colspan="3" style="width: 120px; padding: 4px 0 5px 0px;"><span><a href="http://www.abanana.pl/?utm_source=email&utm_medium=footer"><img src="http://static.eura7.com/email/abanana.png" border="0" alt="Abanana" width="131" height="31" /></a></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><a href="https://www.facebook.com/AbananaAdvertising/"><img src="http://static.eura7.com/email/facebook.png" border="0" alt="Facebook" width="24" height="24" /></a>&nbsp;&nbsp;<a href="https://www.linkedin.com/company/abanana-advertising/"><img src="http://static.eura7.com/email/linkedin.png" border="0" alt="LinkedIn" width="24" height="24" /></a>&nbsp;&nbsp;<a href="https://www.instagram.com/abanana_advertising/"><img src="http://static.eura7.com/email/instagram.png" border="0" alt="Instagram" width="24" height="24" /></a></span></td>')
+        	if (photosection == "") {
+                logo = (type == 'eura7' ? '<td colspan="3" style="width: 220px; "><span><a href="http://www.eura7.com/?utm_source=email&utm_medium=footer"><img src="http://static.eura7.com/email/eura7.png" border="0" alt="Eura7" width="93" height="31" /></a></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><a href="https://www.facebook.com/EURA7/"><img src="http://static.eura7.com/email/facebook.png" border="0" alt="Facebook" width="24" height="24" style="vertical-align: 4px;"/></a>&nbsp;&nbsp;<a href="https://www.linkedin.com/company/eura7/"><img src="http://static.eura7.com/email/linkedin.png" border="0" alt="LinkedIn" width="24" height="24" style="vertical-align: 4px;"/></a></span></td>' : '<td colspan="3" style="width: 120px; padding: 4px 0 5px 0px;"><span><a href="http://www.abanana.pl/?utm_source=email&utm_medium=footer"><img src="http://static.eura7.com/email/abanana.png" border="0" alt="Abanana" width="131" height="31" /></a></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><a href="https://www.facebook.com/AbananaAdvertising/"><img src="http://static.eura7.com/email/facebook.png" border="0" alt="Facebook" width="24" height="24" /></a>&nbsp;&nbsp;<a href="https://www.linkedin.com/company/abanana-advertising/"><img src="http://static.eura7.com/email/linkedin.png" border="0" alt="LinkedIn" width="24" height="24" /></a>&nbsp;&nbsp;<a href="https://www.instagram.com/abanana_advertising/"><img src="http://static.eura7.com/email/instagram.png" border="0" alt="Instagram" width="24" height="24" /></a></span></td>');
+            };
+
+            var telephoneselection = "<p style='line-height: 18px; '><span style='font-size: 14px; color: #606060; font-family: Arial, Verdana; line-height: 14px;'><a href='tel:+48" + ($("#telephone_input").val().replace(/ /ig, "")) + "' style='color: #ffffff; white-space: nowrap; text-decoration: none;'><span style='color: #606060; text-decoration: none;'>"+ ("+48 "+ $("#telephone_input").val()) + "</span></a></br>";
+            if ($("#telephone_input").val() == '') {
+                telephoneselection = "<p style='line-height: 12px; '><span style='font-size: 14px; color: #606060; font-family: Arial, Verdana; line-height: 14px;'>";
+            };
+
+            var position = "<div style='line-height: 14px; margin: 10px 0px 5px 0px;'><span style='font-size: 18px; color: " + (type == 'eura7' ? '#0072BA' : '#A51D21') + "; font-family: Arial, Verdana; font-weight: bold;'>" + (document.getElementById("name_input").innerHTML =$("#name_input").val()) + "</span><br /><span style='font-size: 12px; color: #c2c2c2; font-family: Arial, Verdana;'>" + (document.getElementById("generate_position").innerHTML =$("#position_input").val()) + "</span><br /></div>";
+            if ($("#position_input").val() == '') {
+                position = "<div style='line-height: 14px; margin: 10px 0px 5px 0px;'><span style='font-size: 18px; color: " + (type == 'eura7' ? '#0072BA' : '#A51D21') + "; font-family: Arial, Verdana; font-weight: bold;'>" + (document.getElementById("name_input").innerHTML =$("#name_input").val()) + "</span></div>";
+            };
+
+            $( "div#generated_footer" ).html("<div id='emailfooter'><!--<span style='font-size: 12px; font-family: arial;'>-- <br /></span>--><table style='width: 445px; background: #ffffff; border-collapse: collapse;' border='0'>"
+				+ "<tr><td style='line-height: 14px; font-size:13px;'><br />Pozdrawiam <br />--</td></tr>"
+				+ "<tr>"
+				+ "<td colspan='3' style='line-height: 14px;'>"
+                + position
+				+ "</td>"
+				+ "</tr>"
+				+ "<tr>"
+				// PHOTO
+				+ photosection
+                + "<td padding-left='6px'>"
+				// TELEPHONE
+				+ telephoneselection
+				// EMAIL (EURA7 OR ABANANA)
+                + "<a href='mailto:" + (document.getElementById("generate_email").innerHTML =$("#email_input").val()) + (type == 'eura7' ? '@eura7.com' : '@abanana.pl') + "' style='color: rgba(255,255,255,0.01); white-space: nowrap; text-decoration: none;'><span style='color: #606060; text-decoration: none;'>"+ (document.getElementById("generate_email").innerHTML =$("#email_input").val()) + (type == 'eura7' ? '@eura7.com' : '@abanana.pl') + "</span></a></span>"
+                + "</p>"
+                + "</td>"
+                + "</tr>"
+                + "<tr>"
+				// LOGO (EURA7 OR ABANANA)
+				+ logo
+                + "</tr>"
+                + "<tr>"
+                + "<td colspan='3' style='width: 350px; '>"
+				// PODSIP
+                + "<p style='font-size: 9px; color: #c2c2c2; font-family: Arial; margin: 0; padding-bottom: 10px; padding-left: 0px; line-height: 12px; padding-top: 7px;'>"
+                + "Eura7 Sp. z o.o.<br />"
+                + "os. 2 Pułku Lotniczego 47A, 31-870 Kraków, PL<br />"
+                + "NIP: 6762429093, REGON: <span>1213</span>42416, KRS: 0000365066"
+				+ "<br /><br /><br /><a href=\"https://www.labber.pl/category/podcast/?utm_source=email&utm_medium=footer&utm_campaign=Podcast&utm_content="+$("#email_input").val()+"\"><img src=\"http://static.eura7.com/email/podcast.png\" border=\"0\" alt=\"Eura7\" width=\"264\" height=\"36\" /></a>"
+                + "</p>"
+                + "</td>"
+                + "</tr>"
+                + "</table></div>"
+            );
+        }
+
+        $( document ).ready(function() {
+            $( "#email_select" ).change(function () {
+                var imput_value=$( "#email_select" ).val();
+                $("#name_input").val(employees[imput_value]["name"]);
+                $("#telephone_input").val(employees[imput_value]["telephone"]);
+                $("#email_input").val(employees[imput_value]["email"]);
+                $("#position_input").val(employees[imput_value]["position"]);
+                $("#photo_input").val(employees[imput_value]["photo"]);
+                templateGen();
+            });
+
+            $("input").keyup(function(){
+                templateGen();
+            });
+
+            $('input[type="radio"]').click(function(){
+                templateGen();
+            });
+
+            $("#template").submit(function(){
+                templateGen();
+                return false;
+            });
+
+            var modal = document.getElementById('faq-generator');
+            var btn = document.getElementById("myBtn");
+            var span = document.getElementsByClassName("close")[0];
+
+            btn.onclick = function() {
+                modal.style.display = "block";
+            }
+
+            span.onclick = function() {
+                modal.style.display = "none";
+            }
+
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
+        });
+
+        function selectElementContents(el) {
+            var body = document.body, range, sel;
+            var modalAlert = document.getElementById('clipboardAlert');
+            if (document.createRange && window.getSelection) {
+                range = document.createRange();
+                sel = window.getSelection();
+                sel.removeAllRanges();
+                document.execCommand("Copy");
+                modalAlert.style.display = "block";
+                setTimeout(function() { modalAlert.style.display = "none" }, 1000);
+                try {
+                    range.selectNodeContents(el);
+                    sel.addRange(range);
+                    document.execCommand("Copy");
+                    modalAlert.style.display = "block";
+                    setTimeout(function() { modalAlert.style.display = "none" }, 1000);
+                } catch (e) {
+                    range.selectNode(el);
+                    sel.addRange(range);
+                    document.execCommand("Copy");
+                    modalAlert.style.display = "block";
+                    setTimeout(function() { modalAlert.style.display = "none" }, 1000);
+                }
+            } else if (body.createTextRange) {
+                range = body.createTextRange();
+                range.moveToElementText(el);
+                range.select();
+                document.execCommand("Copy");
+                modal.style.display = "block";
+                setTimeout(function() { modalAlert.style.display = "none" }, 1000);
+            }
+        }
+
+		// DIFFERENT WAY TO COPY CONTENT FOR DIV
+
+        //function CopyToClipboard(containerid) {
+            //if (document.selection) {
+                //var range = document.body.createTextRange();
+                //range.moveToElementText(document.getElementById(containerid));
+                //range.select().createTextRange();
+                //document.execCommand("Copy");
+
+            //} else if (window.getSelection) {
+                //var range = document.createRange();
+                //document.getElementById(containerid).style.display = "block";
+                //range.selectNode(document.getElementById(containerid));
+                //window.getSelection().addRange(range);
+                //document.execCommand("Copy");
+                //document.getElementById(containerid).style.display = "none";
+            //}
+        //}
+
+	</script>
+</head>
+<body>
+<div class="page-wrap" style="margin-top:60px;">
+    <div id="page-top">
+	    <h1>GENERATOR STOPEK EMAIL EURA7 & ABANANA
+            <button id="myBtn">==> Jak korzystać z generatora? <==</button>
+        </h1>
+    </div>
+	<div class="page-left">
+		<form id="template">
+			<div class="styled-select slate">
+				<!-- SELECT -->
+				<select name="email" id="email_select">
+					<option value="-"> Kliknij aby wybrać</option>
+					<script>
+
+                        var employees = [];
+
+                        //TABLE FROMAT EXAMPLE.
+                        //employees.push({'email': '', 'name': '', 'telephone': '', 'position': '', 'photo': ''});
+                        employees.push({'email': 'zmien.adres', 'name': 'Szablon bez zdjęcia', 'telephone': '', 'position': '', 'photo': 'http://static.eura7.com/email/'});
+						employees.push({'email': 'adam.cichon', 'name': 'Adam Cichoń', 'telephone': '', 'position': 'Graphic Designer', 'photo': 'http://static.eura7.com/email/adam-cichon.png'});
+                        employees.push({'email': 'adam.fatyga', 'name': 'Adam Fatyga', 'telephone': '606 258 804', 'position': 'Account Manager', 'photo': 'http://static.eura7.com/email/adam-fatyga.png'});
+                        //employees.push({'email': 'anna.gancarczyk', 'name': 'Anna Gancarczyk', 'telephone': '535 444 673', 'position': 'Junior Social Media Specialist', 'photo': 'http://static.eura7.com/email/ania-gancarczyk.png'});
+                        employees.push({'email': 'agata.kieloch', 'name': 'Agata Kieloch', 'telephone': '500 533 231', 'position': 'Account Manager', 'photo': 'http://static.eura7.com/email/agata-kieloch.png'});
+                        employees.push({'email': 'agnieszka.krok', 'name': 'Agnieszka Krok', 'telephone': '698 977 883', 'position': 'Head of Creative', 'photo': 'http://static.eura7.com/email/agnieszka-krok.png'});
+                        employees.push({'email': 'agnieszka.juraszczyk', 'name': 'Agnieszka Juraszczyk', 'telephone': '728 839 515', 'position': 'Account Executive', 'photo': 'http://static.eura7.com/email/agnieszka-juraszczyk.png'});
+						employees.push({'email': 'agnieszka.smyth', 'name': 'Agnieszka Smyth', 'telephone': '', 'position': 'Senior Copywriter', 'photo': 'http://static.eura7.com/email/agnieszka-smith.png'});
+						employees.push({'email': 'aleksandra.bulanowska', 'name': 'Aleksandra Bulanowska', 'telephone': '', 'position': 'Junior Graphic Designer', 'photo': 'http://static.eura7.com/email/aleksandra-bulanowska.png'});
+                        employees.push({'email': 'aneta.zwirowicz', 'name': 'Aneta Zwirowicz', 'telephone': '', 'position': 'HR Specialist', 'photo': 'http://static.eura7.com/email/aneta-zwirowicz.png'});
+                        employees.push({'email': 'aneta.wloczek', 'name': 'Aneta Wloczek', 'telephone': '728 838 144', 'position': 'Account Manager', 'photo': 'http://static.eura7.com/email/aneta-wloczek.png'});
+						employees.push({'email': 'anna.piechota', 'name': 'Anna Piechota', 'telephone': '535 444 673', 'position': 'Junior Social Media Specialist', 'photo': 'http://static.eura7.com/email/anna-piechota.png'});
+                        //employees.push({'email': 'arkadiusz.roch', 'name': 'Arkadiusz Roch', 'telephone': '', 'position': 'IT Engineer', 'photo': 'http://static.eura7.com/email/arkadiusz-roch.png'});
+                        employees.push({'email': 'bartlomiej.dziedzic', 'name': 'Bartłomiej Dziedzic', 'telephone': '500 533 234', 'position': 'Junior Project Manager', 'photo': 'http://static.eura7.com/email/bartlomiej-dziedzic.png'});
+                        employees.push({'email': 'bartlomiej.regucki', 'name': 'Bartłomiej Regucki', 'telephone': '728 970 484', 'position': 'Account Manager', 'photo': 'http://static.eura7.com/email/bartlomiej-regucki.png'});
+                        employees.push({'email': 'bartosz.dziedzic', 'name': 'Bartosz Dziedzic', 'telephone': '', 'position': 'Junior PR Specialist', 'photo': 'http://static.eura7.com/email/bartosz-dziedzic.png'});
+                        //employees.push({'email': 'dominika.czyrnek', 'name': 'Dominika Czyrnek', 'telephone': '881 911 402', 'position': 'Junior Social Media Specialist', 'photo': 'http://static.eura7.com/email/dominika-czyrnek.png'});
+                        //employees.push({'email': 'bartlomiej.kapron', 'name': 'Bartłomiej Kaproń', 'telephone': '698 977 743', 'position': 'Junior Social Media Specialist', 'photo': 'http://static.eura7.com/email/bartlomiej-kapron.png'});
+                        //employees.push({'email': 'dariusz.stolarz', 'name': 'Dariusz Stolarz', 'telephone': '', 'position': 'Copywriter', 'photo': 'http://static.eura7.com/email/dariusz-stolarz.png'});
+                        //employees.push({'email': 'edyta.zawora', 'name': 'Edyta Zawora', 'telephone': '', 'position': 'PPC Specialist', 'photo': 'http://static.eura7.com/email/edyta-zawora.png'});
+						employees.push({'email': 'dawid.minda', 'name': 'Dawid Minda', 'telephone': '', 'position': 'Junior IT Engineer', 'photo': 'http://static.eura7.com/email/dawid-minda.png'});
+                        //employees.push({'email': 'ewa.lubera', 'name': 'Ewa Lubera', 'telephone': '', 'position': 'Asystentka Zarządu', 'photo': 'http://static.eura7.com/email/ewa-lubera.png'});
+                        //employees.push({'email': 'iwona.karczmarczyk', 'name': 'Iwona Karczmarczyk', 'telephone': '881 911 402', 'position': 'Social Media Specialist', 'photo': 'http://static.eura7.com/email/iwona-karczmarczyk.png'});
+                        //employees.push({'email': 'izabela.knara', 'name': 'Izabela Knara', 'telephone': '515 438 929', 'position': 'Account Executive', 'photo': 'http://static.eura7.com/email/izabela-knara.png'});
+                        //employees.push({'email': 'jakub.wolek', 'name': 'Jakub Wołek', 'telephone': '608 018 973', 'position': 'Media Planner', 'photo': 'http://static.eura7.com/email/jakub-wolek.png'});
+                        //employees.push({'email': 'jakub.zuckerman', 'name': 'Jakub Zuckerman', 'telephone': '535 444 673', 'position': 'Junior Social Media Specialist', 'photo': 'http://static.eura7.com/email/jakub-zuckerman.png'});
+                        employees.push({'email': 'jarek.dziedzicki', 'name': 'Jarek Dziedzicki', 'telephone': '737 775 177', 'position': 'Head of Client Service', 'photo': 'http://static.eura7.com/email/jarek-dziedzicki.png'});
+                        //employees.push({'email': 'joanna.paterek', 'name': 'Joanna Paterek', 'telephone': '', 'position': '', 'photo': 'http://static.eura7.com/email/'});
+                        //employees.push({'email': 'jolanta.placek', 'name': 'Jolanta Placek', 'telephone': '', 'position': 'PPC Specialist', 'photo': 'http://static.eura7.com/email/jolanta-placek.png'});
+                        employees.push({'email': 'jolanta.przetaczek', 'name': 'Jolanta Przetaczek', 'telephone': '698 977 743', 'position': 'Social Media Specialist', 'photo': 'http://static.eura7.com/email/jolanta-przetaczek.png'});
+                        //employees.push({'email': 'julianna.cezar', 'name': 'Julianna Cezar', 'telephone': '728 970 484', 'position': 'Account Executive', 'photo': 'http://static.eura7.com/email/julianna-cezar.png'});
+                        //employees.push({'email': 'justyna.tychmanowicz', 'name': 'Justyna Tychmanowicz', 'telephone': '535 444 673', 'position': 'Social Media Specialist', 'photo': 'http://static.eura7.com/email/justyna-tychmanowicz.png'});
+                        //employees.push({'email': 'kacper.bobrowski', 'name': 'Kacper Bobrowski', 'telephone': '', 'position': 'Junior IT Engineer', 'photo': 'http://static.eura7.com/email/kacper-bobrowski.png'});
+                        employees.push({'email': 'kamila.starzyk', 'name': 'Kamila Starzyk', 'telephone': '', 'position': 'Junior PR Specialist', 'photo': 'http://static.eura7.com/email/kamila-starzyk.png'});
+                        employees.push({'email': 'karol.teterycz', 'name': 'Karol Teterycz', 'telephone': '730 448 411', 'position': 'Project Manager', 'photo': 'http://static.eura7.com/email/karol-teterycz.png'});
+                        employees.push({'email': 'karol.styrcz', 'name': 'Karol Styrcz', 'telephone': '', 'position': 'Junior PPC Specialist', 'photo': 'http://static.eura7.com/email/karol-styrcz.png'});
+						//employees.push({'email': 'karolina.lachman', 'name': 'Karolina Łachman', 'telephone': '', 'position': 'Junior Researcher', 'photo': 'http://static.eura7.com/email/karolina-lachman.png'});
+                        employees.push({'email': 'karolina.szarpak', 'name': 'Karolina Szarpak', 'telephone': '535 959 155', 'position': 'Community Manager', 'photo': 'http://static.eura7.com/email/karolina-szarpak.png'});
+                        //employees.push({'email': 'karolina.swiatek', 'name': 'Karolina Świątek', 'telephone': '', 'position': 'Social Media Specialist', 'photo': 'http://static.eura7.com/email/karolina-swiatek.png'});
+                        //employees.push({'email': 'krystian.bilski', 'name': 'Krystian Bilski', 'telephone': '728 839 515', 'position': 'New Business Assistent', 'photo': 'http://static.eura7.com/email/krystian-bilski.png'});
+                        //employees.push({'email': 'lukasz.medrysa', 'name': 'Łukasz Mędrysa', 'telephone': '535 333 397', 'position': 'Social Media Specialist', 'photo': 'http://static.eura7.com/email/lukasz-medrysa.png'});
+                        employees.push({'email': 'lukasz.bednarski', 'name': 'Łukasz Bednarski', 'telephone': '', 'position': 'Junior IT Engineer', 'photo': 'http://static.eura7.com/email/lukasz-bednarski.png'});
+                        employees.push({'email': 'lukasz.wolek', 'name': 'Łukasz Wołek', 'telephone': '600 004 680', 'position': 'CEO / Business Development Director', 'photo': 'http://static.eura7.com/email/lukasz-wolek.png'});
+                        employees.push({'email': 'maciej.rozanski', 'name': 'Maciej Rożański', 'telephone': '', 'position': 'IT Engineer', 'photo': 'http://static.eura7.com/email/maciej-rozanski.png'});
+						employees.push({'email': 'magdalena.konwent', 'name': 'Magdalena Konwent', 'telephone': '728 839 515', 'position': 'Account Executive', 'photo': 'http://static.eura7.com/email/magdalena-konwent.png'});
+                        //employees.push({'email': 'magdalena.macheta', 'name': 'Magdalena Macheta', 'telephone': '500 533 215', 'position': 'Account Executive', 'photo': 'http://static.eura7.com/email/magdalena-macheta.png'});
+                        //employees.push({'email': 'magdalena.stefanik', 'name': 'Magdalena Stefanik', 'telephone': '698 978 480', 'position': 'Brand Assistant', 'photo': 'http://static.eura7.com/email/magdalena-stefanik.png'});
+                        employees.push({'email': 'magdalena.slowik', 'name': 'Magdalena Słowik', 'telephone': '', 'position': 'Junior Account Executive', 'photo': 'http://static.eura7.com/email/magdalena-slowik.png'});
+                        employees.push({'email': 'maks.michalczak', 'name': 'Maks Michalczak', 'telephone': '728 834 283', 'position': 'PR Manager', 'photo': 'http://static.eura7.com/email/maks-michalczak.png'});
+						employees.push({'email': 'marcin.jasko', 'name': 'Marcin Jaśko', 'telephone': '698 978 480', 'position': 'New Business Manager', 'photo': 'http://static.eura7.com/email/marcin-jasko.png'});
+						//employees.push({'email': 'mariusz.koryczan', 'name': 'Mariusz Koryczan', 'telephone': '', 'position': 'IT Engineer', 'photo': 'http://static.eura7.com/email/mariusz-koryczan.png'});
+                        employees.push({'email': 'marta.kostarek', 'name': 'Marta Kostarek-Olech', 'telephone': '728 844 854', 'position': 'Prokurent / Finance Director', 'photo': 'http://static.eura7.com/email/marta-kostarek.png'});;
+						employees.push({'email': 'michal.gladysz', 'name': 'Michał Gładysz', 'telephone': '', 'position': 'Junior IT Engineer', 'photo': 'http://static.eura7.com/email/michal-gladysz.png'});
+						employees.push({'email': 'monika.piasecka', 'name': 'Monika Piasecka', 'telephone': '515 439 084', 'position': 'Senior Strategy Planner', 'photo': 'http://static.eura7.com/email/monika-piasecka.png'});
+                        //employees.push({'email': 'paulina.kostrzewa', 'name': 'Paulina Kostrzewa', 'telephone': '737 771 710', 'position': 'Public Relations Specialist', 'photo': 'http://static.eura7.com/email/paulina-kostrzewa.png'});
+                        employees.push({'email': 'paulina.kasprzyk', 'name': 'Paulina Kasprzyk', 'telephone': '737 771 710', 'position': 'Social Media Specialist', 'photo': 'http://static.eura7.com/email/paulina-kasprzyk.png'});
+                        employees.push({'email': 'pawel.mos', 'name': 'Paweł Moś', 'telephone': '', 'position': 'Junior Content Specialist', 'photo': 'http://static.eura7.com/email/pawel-mos.png'});
+                        //employees.push({'email': 'piotr.madej', 'name': 'Piotr Madej', 'telephone': '', 'position': 'Junior Graphic Designer', 'photo': 'http://static.eura7.com/email/piotr-madej.png'});
+                        employees.push({'email': 'piotr.mazur', 'name': 'Piotr Mazur', 'telephone': '606 263 629', 'position': 'Head of IT', 'photo': 'http://static.eura7.com/email/piotr-mazur.png'});
+						employees.push({'email': 'piotr.serafin', 'name': 'Piotr Serafin', 'telephone': '', 'position': 'Graphic Designer', 'photo': 'http://static.eura7.com/email/piotr-serafin.png'});
+                        employees.push({'email': 'piotr.szmilyk', 'name': 'Piotr Szmiłyk', 'telephone': '', 'position': 'Head of Art', 'photo': 'http://static.eura7.com/email/piotr-szmilyk.png'});
+                        employees.push({'email': 'robert.bulat', 'name': 'Robert Bułat', 'telephone': '', 'position': 'Junior IT Engineer', 'photo': 'http://static.eura7.com/email/robert-bulat.png'});
+                        employees.push({'email': 'sylwia.jasiak', 'name': 'Sylwia Jasiak', 'telephone': '', 'position': 'UX Designer', 'photo': 'http://static.eura7.com/email/sylwia-jasiak.png'});
+                        employees.push({'email': 'szymon.odolanowski', 'name': 'Szymon Odolanowski', 'telephone': '515 439 116', 'position': 'Influencer Marketing Manager', 'photo': 'http://static.eura7.com/email/szymon-odolanowski.png'});
+                        //employees.push({'email': 'szymon.dittmar', 'name': 'Szymon Dittmar', 'telephone': '881 911 435', 'position': 'Senior Project Manager', 'photo': 'http://static.eura7.com/email/szymon-dittmar.png'});
+                        employees.push({'email': 'tomasz.wrobel', 'name': 'Tomasz Wróbel', 'telephone': '', 'position': 'Senior Graphic Designer', 'photo': 'http://static.eura7.com/email/tomasz-wrobel.png'});
+                        employees.push({'email': 'tomasz.skrabalak', 'name': 'Tomasz Skrabalak', 'telephone': '535 333 379', 'position': 'Członek Zarządu / Managing Director', 'photo': 'http://static.eura7.com/email/tomasz-skrabalak.png'});
+                        //employees.push({'email': 'urszula.sukiennik', 'name': 'Urszula Sukiennik', 'telephone': '728 838 144', 'position': 'Group Account Manager', 'photo': 'http://static.eura7.com/email/urszula-sukiennik.png'});
+                        //employees.push({'email': 'urszula.swierk', 'name': 'Urszula Świerk', 'telephone': '', 'position': 'Junior PPC Specialist', 'photo': 'http://static.eura7.com/email/urszula-swierk.png'});
+						employees.push({'email': 'wiktoria.drelicharz', 'name': 'Wiktoria Drelicharz', 'telephone': '', 'position': 'Junior Graphic Designer', 'photo': 'http://static.eura7.com/email/wiktoria-drelicharz.png'});
+                        employees.push({'email': 'zofia.stachon', 'name': 'Zofia Stachoń', 'telephone': '531 424 653', 'position': 'Community Manager', 'photo': 'http://static.eura7.com/email/zofia-stachon.png'});
+                        employees.push({'email': 'serwis', 'name': 'Serwis Eura7', 'telephone': '666 034 496', 'position': 'Support', 'photo': 'http://static.eura7.com/email/default.png'});
+
+                        for (i=0;i<employees.length;i++){
+                            document.write("<option value="+i+">"+employees[i]["name"]+"</option>");
+                        }
+					</script>
+				</select>
+			</div>
+			<!-- INPUT (TEXT) -->
+			<div class="styled-input">
+				<input type="text" placeholder="Wpisz Imię i Nazwisko (np. Jan Kowalski)" id="name_input"/>
+				<label>Imię i Nazwisko</label>
+			</div>
+			<div class="styled-input">
+				<input type="text" placeholder="Wpisz Stanowisko (np. Grafik)" id="position_input"/>
+				<label>Stanowisko</label>
+			</div>
+			<div class="styled-input">
+				<input type="text" placeholder="Wpisz nr Telefonu (np. 902 431 124)" id="telephone_input"/>
+				<label>Telefon</label>
+			</div>
+			<div class="styled-input">
+				<input type="text" placeholder="Wpisz E-mail (bez domeny np. Jan.Kowalski)" id="email_input"/>
+				<label>Email (bez domeny)</label>
+			</div>
+			<div class="styled-photo">
+				<div class="styled-input">
+					<input type="text" placeholder="Nazwa pliku ze zdjęciem" id="photo_input"/>
+					<label>Zjęcie</label>
+				</div>
+			</div>
+			<!-- INPUT (RADIO) -->
+			<div class="styled-radio">
+				<div class="styled-radio-select">
+					<a>Wybierz firmę:</a>
+					<label><input type="radio" name="colorRadio" value="eura7" checked="checked"> <img src="http://static.eura7.com/email/eura7.png" border="0" alt="Eura7" width="93" height="31" /></label> <label><input type="radio" name="colorRadio" value="abanana"> <img src="http://static.eura7.com/email/abanana.png" border="0" alt="Eura7" width="131" height="31" /></label>
+				</div>
+			</div>
+		</form>
+	</div>
+	<div class="page-right">
+		<!-- GENERATE HTML CODE FROM JS -->
+		<div id="generated_footer">
+			<div style="margin-top: 20px; margin-bottom: 20px; text-align: center;">
+				WYBIERZ OSOBĘ
+			</div>
+		</div>
+		<div class="eura7_template boxtemp">
+			<span id="generate_name"></span>
+			<span id="generate_position"></span>
+			<span id="generate_photo"></span>
+			<span id="generate_telephone"></span>
+			<span id="generate_email" ></span>
+		</div>
+		<div class="abanana_template boxtemp">
+			<span id="generate_name_ab"></span>
+			<span id="generate_position_ab"></span>
+			<span id="generate_photo_ab"></span>
+			<span id="generate_telephone_ab"></span>
+			<span id="generate_email_ab" ></span>
+		</div>
+	</div>
+
+	<button id="clipboardBtn" onclick="selectElementContents( document.getElementById('emailfooter') );"    >Kliknij aby skopiować</button>
+
+	<div id="clipboardAlert" class="modalAlert">
+		<div class="clipboardAlertBox">
+			<p>Stopka została skopiowana</p>
+		</div>
+	</div>
+
+	<div id="faq-generator" class="modal">
+		<div class="faq-wrap">
+			<div class="faq-header">
+				<span class="close">&times;</span>
+				ETAP1 - Jak korzystać z generatora
+			</div>
+			<div class="faq-body">
+				<p><div class="faq-step">1.</div> Znajdź siebie na liście osób, klikając w "Kliknij aby wybrać"<p>
+				<img src="img/faq1.png" alt="step1" height="100%" width="100%">
+
+				<p><div class="faq-step">2.</div> Dokonaj ewentualnych poprawek</p>
+				<img src="img/faq2.png" alt="step1" height="100%" width="100%">
+
+				<p><div class="faq-step">3.</div> Wybierz firmę</p>
+				<img src="img/faq3.png" alt="step1" height="100%" width="100%">
+
+				<p><div class="faq-step">4.</div> Naciśnij przycisk "Kliknij aby skopiować"</p>
+				<img src="img/faq4.png" alt="step1" height="100%" width="100%">
+
+				<p><div class="faq-step">5.</div> Po wyświetleniu tego kominukatu możesz przejśc do następnego etapu</p>
+				<img src="img/faq5.png" alt="step1" height="100%" width="100%">
+
+			</div>
+            <div class="faq-header">
+
+                ETAP2 - Konfiguracja Gmail
+            </div>
+            <div class="faq-body">
+
+                <p><div class="faq-step">1.</div> Otwórz swoje konto Gmail i kliknij ikonę <img src="img/zebatka.png" alt="step1" height="12%" width="12%"> która znajduje się po prawej stronie, a następnie kliknij w ustawienia.</p>
+				<img src="img/faq1_1.png" alt="step1" height="100%" width="100%">
+
+				<p><div class="faq-step">2.</div> Kliknij w zakładkę "Konta" i kliknij "Dodaj inny adres e-mail"</p>
+				<img src="img/faq2_2.png" alt="step1" height="100%" width="100%">
+
+				<p><div class="faq-step">3.</div> Wypełij tak jak w przykładach poniżej odpowiednio dla Eura7 i Abanana</p>
+				<img src="img/faq3_3_3.png" alt="step1" height="100%" width="100%">
+				<img src="img/faq3_3.png" alt="step1" height="100%" width="100%">
+
+				<p><div class="faq-step">4.</div> Ustaw jako domyśly swoj adres, <b>@abanana.pl</b> lub <b>@eura7.com</b></p>
+				<img src="img/faq4_4_1.png" alt="step1" height="100%" width="100%">
+
+				<p><div class="faq-step">5.</div> Kliknij Prawy -> Odśwież lub F5 aby odświezyć stronę</p>
+				<img src="img/faq4_4.png" alt="step1" height="100%" width="100%">
+
+				<p><div class="faq-step">6.</div> W zakładce "Konta" znajdź "Przy odpowiadaniu na wiadomość:", zaznacz pierwsze pole</p>
+				<img src="img/faq5_5.png" alt="step1" height="100%" width="100%">
+
+				<p><div class="faq-step">7.</div> Przejdź do zakładki "Ogólne" i znajdź "Podpis"</p>
+				<img src="img/faq6_6_1.png" alt="step1" height="100%" width="100%">
+
+				<p><div class="faq-step">8.</div> Wybierz addres e-mail z odpowiednią domeną dla twojej firmy</p>
+				<img src="img/faq6_6.png" alt="step1" height="100%" width="100%">
+
+				<p><div class="faq-step">9.</div> Wklej wcześniej skopiowaną stopkę do pola (Prawy -> Wklej) lub (Ctrl + V)</p>
+				<img src="img/faq7_7.png" alt="step1" height="100%" width="100%">
+
+				<p><div class="faq-step">10.</div> Pamiętaj o zaznaczeniu checkboxa</p>
+				<img src="img/faq7_7_1.jpg" alt="step1" height="100%" width="100%">
+
+				<p><div class="faq-step">11.</div> Zapisz dokonane zmiany</p>
+				<img src="img/faq8_8.png" alt="step1" height="100%" width="100%">
+
+            </div>
+            <div class="faq-header">
+                GOTOWE
+            </div>
+		</div>
+	</div>
+</div>
+</body>
+</html>
